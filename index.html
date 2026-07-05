@@ -1,0 +1,1732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    html{
+        overflow-x: hidden;
+    }
+    body{
+         width: 100%;
+        min-height: 100vh;
+        min-height: 100dvh;
+        height: auto;
+        overflow-x: hidden;
+    }
+    .first{
+        width: 100%;
+        aspect-ratio: 430 / 932;
+        background-image:url('bg.png') ;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .fourth{ width: 100%;
+        aspect-ratio: 430 / 326;
+        margin-top: -1px;
+        background-image:url('footer.png') ;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+    .ext{
+        width: 100%;
+        height: auto;
+        padding-bottom: 60px;
+        margin-top: -2px;
+        background-image:url('bg-exxt.png') ;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: left top;
+        overflow: hidden;
+    }
+
+            /* Desktop Warning View */
+        #desktop-warning {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        #desktop-warning h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        #desktop-warning p {
+            font-size: 1rem;
+            color: #ccc;
+        }
+
+        /* Mobile View Container */
+        #mobile-app {
+            display: none;
+            width: 100%;
+            max-width: 430px; /* Constrains to standard large phone width if tested on tablet */
+            margin: 0 auto;
+            background-color: var(--bg-cream);
+            position: relative;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            color: var(--text-dark-green);
+            overflow-x: hidden;
+        }
+
+        /* Responsive Breakpoint */
+        @media (max-width: 768px) {
+            #desktop-warning {
+                display: none;
+            }
+            #mobile-app {
+                display: block;
+            }
+            body {
+                background-color: var(--bg-cream);
+            }
+        }
+
+        /* --- Typography & Global --- */
+        h1, h2, h3, .serif {
+            font-family: 'Cormorant Garamond', serif;
+        }
+        
+        .script-font {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            color: var(--text-dark-green);
+            font-weight: 400;
+            margin: 15px 0;
+        }
+
+        .gold-text { color: var(--text-gold); }
+        .center { text-align: center; }
+
+        img { max-width: 100%; display: block; }
+        
+        /* --- Buttons --- */
+        .btn {
+            background-color: var(--btn-green);
+            color: #b39b5e;
+            border: 1px solid #b39b5e;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 5%;
+            margin-bottom: 5%;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            position: relative;
+            padding: 40px 20px 0;
+            text-align: center;
+            background: linear-gradient(to bottom, #F4F3EC 0%, #DCE3D6 100%);
+            overflow: hidden;
+        }
+
+        .hero-assets-top {
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            display: flex;
+            justify-content: space-between;
+            pointer-events: none;
+        }
+        
+        .hero-assets-top img.corner { width: 120px; }
+        .hanging-bells { width: 100%; position: absolute; top: 0; opacity: 0.8; }
+
+      
+
+        .subheading {
+            font-size: 0.65rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .date-block {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .date-block .month {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+        }
+        .date-block .day {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            line-height: 1;
+            color: var(--text-dark-green);
+        }
+        .date-block .line {
+            height: 1px;
+            width: 60px;
+            background-color: var(--text-dark-green);
+        }
+
+        .time-text {
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .hero-scene {
+            position: relative;
+            margin-top: 20px;
+            height: 350px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+        }
+
+
+
+        /* --- Navigation Bar --- */
+        .bottom-nav {
+            width: 100%;
+            background-image: url('bottom_nav.png');
+            background-size: cover;
+            background-position: center;
+            height: 80px;
+            position: relative;
+            z-index: 10;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 0 10px;
+        }
+        /* Fallback if image fails */
+        .bottom-nav::before {
+            content: ''; position: absolute; top:0; left:0; right:0; bottom:0;
+            background-color: var(--nav-bg-green); z-index: -1;
+        }
+
+        /* --- Events Section --- */
+        #events {
+            position: relative;
+            width: 100%;
+            padding: 30px 0 50px;
+            margin-bottom: -2px;
+            background-image: url('bg2.png');
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            background-position: center;
+        }
+       /* --- Timeline Structure & Line --- */
+        .timeline {
+            position: relative;
+            margin: 22px auto;
+            max-width: min(280px, 90vw); /* Gives it good central alignment */
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            bottom: 20px; /* Prevents the line from sticking out the bottom */
+            left: 29px; /* Perfectly centers a 2px line behind your 60px icons */
+            width: 2px;
+            background-color: #c8b072; /* Premium gold color */
+            z-index: 1; 
+        }
+
+        /* --- Scroll Animation Starting State --- */
+        .event-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            position: relative;
+            text-align: left;
+            z-index: 2; /* Ensures items sit on top of the golden line */
+            
+            /* Hidden state for the animation */
+            opacity: 0; 
+            transform: translateY(40px); /* Pushes it down slightly */
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out; 
+        }
+
+        /* --- Scroll Animation Trigger State --- */
+        /* JavaScript will add this class when the user scrolls to the item */
+        .event-item.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .event-icon {
+            width: 60px;
+            height: 60px;
+            background: #fff;
+            border-radius: 50%;
+            border: 2px solid #c8b072; /* Matches the line color */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 3;
+            margin-right: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            flex-shrink: 0;
+        }
+        .event-icon img { width: 35px; }
+        .event-details h3 {
+            font-size: 1.1rem;
+            margin-bottom: 4px;
+            
+        }
+        .event-details p {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.65rem;
+            color: #666;
+            line-height: 1.4;
+        }
+
+        /* --- Gallery Section --- */
+        #gallery {
+            text-align: center;
+            background-color:rgba(50, 76, 32);
+        }
+        .gallery-carousel {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: clamp(4px, 2vw, 10px);
+            margin-top: 40px;
+        }
+        .gallery-img {
+            width: clamp(55px, 18vw, 80px);
+            height: clamp(85px, 28vw, 120px);
+            object-fit: cover;
+            border-radius: 8px;
+            border: 2px solid #fff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            flex-shrink: 0;
+            
+            /* ADD THIS LINE FOR SMOOTH FADING */
+            transition: opacity 0.3s ease-in-out, width 0.3s, height 0.3s;
+        }
+        .gallery-img.main {
+            width: clamp(70px, 24vw, 110px);
+            height: clamp(105px, 34vw, 150px);
+        }
+        .arrow-btn {
+            background: var(--nav-bg-green);
+            color: #b39b5e;
+            border: none;
+            width: clamp(24px, 7vw, 30px);
+            height: clamp(24px, 7vw, 30px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        /* --- RSVP Section --- */
+        #rsvp {
+            background-size: cover;
+        }
+       .rsvp-form {
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid var(--line-color);
+            border-radius: 12px;
+            padding: 40px 20px; /* Gives nice breathing room inside the box */
+            max-width: min(415px, 86vw);
+            margin: 20px auto; 
+            backdrop-filter: blur(5px);
+            
+            /* The magic lines that fix the structure: */
+            display: flex; 
+            flex-direction: column;
+            gap: 20px; /* Adds perfect, even spacing between the inputs and button */
+        }
+        
+        .input-group {
+            width: 100%;
+            margin: 0; /* Removed the old margins since 'gap' handles it now */
+        }
+
+        .input-group input, .input-group select {
+            width: 100%;
+            padding: 16px 15px; /* Adjusted padding to look better */
+            border: 1px solid var(--line-color);
+            border-radius: 8px;
+            background: #FAFAFA;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            color: var(--text-dark-green);
+            outline: none;
+        }
+        
+       
+       
+        .floral-corner {
+            position: absolute;
+            bottom: -50px;
+            right: -20px;
+            width: 150px;
+            z-index: 3;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--text-dark-green);
+            color: var(--bg-cream);
+            padding: 60px 20px 40px;
+            text-align: center;
+            position: relative;
+        }
+        footer h2 {
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            color: var(--text-gold);
+        }
+        footer p {
+            font-size: 0.75rem;
+            line-height: 1.5;
+            max-width: 280px;
+            margin: 0 auto 20px;
+            opacity: 0.9;
+        }
+        footer .script-font {
+            color: var(--bg-cream);
+            font-size: 2.5rem;
+        }
+        h3.section-title {
+            font-size: 1.2rem;
+            text-align: center;
+            margin-bottom: 22px;
+            color: rgb(8, 53, 8);
+            margin-top: 1px;
+        }
+         h2.section-title {
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: -27px;
+            color: #b39b5e;
+            margin-top: 6px;
+        }
+          h2.section1-title {
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 26px;
+            color: rgb(8, 53, 8);
+            margin-top: 48px;
+        }
+        /* --- FALLING LEAVES EFFECT --- */
+.leaves-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Crucial: lets the user click through the leaves */
+    z-index: 9999; /* Keeps the leaves on top of everything */
+    overflow: hidden;
+}
+
+.leaf {
+    position: absolute;
+    top: -10%;
+    color: rgba(11, 49, 3, 0.7); /* A soft transparent green matching your theme */
+    /* Combines a falling animation with a swaying animation */
+    animation: fall linear infinite, sway ease-in-out infinite alternate;
+}
+
+/* Controls the downward movement and rotation */
+@keyframes fall {
+    0% {
+        top: -10%;
+        transform: rotate(0deg);
+    }
+    100% {
+        top: 110%;
+        transform: rotate(360deg);
+    }
+}
+
+/* Controls the side-to-side floating motion */
+@keyframes sway {
+    0% {
+        transform: translateX(0px) rotate(0deg);
+    }
+    100% {
+        transform: translateX(40px) rotate(45deg);
+    }
+}
+#music-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(11, 49, 3, 0.7); /* Transparent dark green matching your theme */
+    color: #b39b5e; /* Gold icon */
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    z-index: 9999; /* Ensures it sits above all background images */
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+/* --- Welcome Splash Screen --- */
+        #welcome-screen {
+            position: fixed; 
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            /* Creates a beautiful spotlight gradient behind the envelope */
+            background: radial-gradient(circle at center, #1b4d1b 0%, #0b3103 80%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 99999; 
+            transition: opacity 1s ease-out, visibility 1s; 
+        }
+
+        /* --- Envelope Animation & Styling --- */
+        .envelope-wrapper {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            perspective: 1000px; 
+            z-index: 5;
+            /* Adds a soft glow behind the envelope */
+            box-shadow: 0 0 40px rgba(226, 212, 166, 0.15); 
+        }
+
+        .envelope {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background-color: #9c8752; /* Slightly darker inside */
+            border-radius: 5px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+        }
+
+        /* The Front Pocket */
+        .envelope-front {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 3; 
+            border-left: 150px solid #c8b072;
+            border-right: 150px solid #c8b072;
+            border-bottom: 100px solid #bda15f;
+            border-top: 100px solid transparent;
+            border-radius: 5px;
+            /* Adds a subtle shadow to the inner seams */
+            filter: drop-shadow(0px -2px 2px rgba(0,0,0,0.05));
+        }
+
+        /* Text on the front of the envelope */
+        .envelope-text {
+            position: absolute;
+            bottom: 25px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            z-index: 4; 
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            pointer-events: none;
+        }
+
+        .to-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.55rem;
+            letter-spacing: 2px;
+            color: #6a592c; /* Ink color */
+            text-transform: uppercase;
+        }
+
+        .names-text {
+            font-family: 'Great Vibes', cursive;
+            font-size: 1.8rem;
+            color: #4a3e1c; 
+        }
+
+        /* The Envelope Flap */
+        .envelope-flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            z-index: 5; 
+            border-left: 150px solid transparent;
+            border-right: 150px solid transparent;
+            border-top: 110px solid #d4be7a; 
+            transform-origin: top;
+            transition: transform 0.6s ease-in-out, z-index 0s linear 0.3s;
+        }
+
+        /* The Wax Seal */
+        .wax-seal {
+            position: absolute;
+            bottom: 10px; /* Placed exactly at the tip of the flap */
+            left: -20px; /* Centered based on the border logic */
+            width: 40px;
+            height: 40px;
+            background: #8b1c1c; /* Deep burgundy wax */
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #e2d4a6;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 14px;
+            font-weight: bold;
+            box-shadow: inset 0 0 5px rgba(0,0,0,0.4), 0 3px 5px rgba(0,0,0,0.3);
+            border: 1px solid #701313;
+        }
+
+        /* The Card Inside */
+        .envelope-paper {
+            position: absolute;
+            bottom: 10px;
+            left: 5%;
+            width: 90%;
+            height: 90%;
+            background: #f4f1e1; 
+            z-index: 2; 
+            border-radius: 5px;
+            padding: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 1s ease-in-out 0.6s; 
+        }
+
+        /* The golden border printed on the card */
+        .card-border {
+            width: 100%;
+            height: 100%;
+            border: 1px solid #c8b072;
+            border-radius: 3px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        /* --- Animation Triggers --- */
+        .envelope-wrapper.is-opening .envelope-flap {
+            transform: rotateX(180deg);
+            z-index: 1; 
+        }
+
+        .envelope-wrapper.is-opening .envelope-paper {
+            transform: translateY(-110px); 
+        }
+
+        /* Glowing Pulse Animation for the Button */
+        .pulse-btn {
+            animation: pulse-glow 2s infinite;
+        }
+
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 0 0 rgba(226, 212, 166, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(226, 212, 166, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(226, 212, 166, 0); }
+        }
+
+        /* --- Golden Countdown Timer --- */
+.golden-countdown {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    padding: 15px 10px;
+    width: 100%;
+    position: relative;
+    z-index: 10;
+    /* If you need to force a dark green background behind it, uncomment the line below */
+    /* background-color: var(--text-dark-green, #0b3103); */
+}
+
+.time-box {
+    margin-top: 135%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #b39b5e; /* Medium Gold */
+    border-radius: 8px;
+    padding: 10px 8px;
+    min-width: 65px;
+    background: rgba(226, 212, 166, 0.1); /* Very subtle light gold tint */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+}
+
+.time-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    color: #e2d4a6; /* Light Gold */
+    font-weight: 600;
+    line-height: 1;
+    margin-bottom: 5px;
+}
+
+.time-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.55rem;
+    color: #b39b5e; /* Medium Gold */
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+/* --- Refined Elegant Events Section --- */
+        .detailed-events-section {
+            position: relative;
+            padding: 80px 20px;
+            width: 100%;
+            background-image: #eee5d0, url('bg2.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Minimalist Header */
+        .events-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .events-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 5px;
+            color: #324c20;
+            text-transform: uppercase;
+            margin-bottom: -5px;
+        }
+
+        .gold-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            width: 200px;
+            margin: 10px auto 0;
+        }
+
+        .gold-divider .line {
+            height: 1px;
+            width: 100%;
+            background: linear-gradient(to right, transparent, rgba(179, 155, 94, 0.5), transparent);
+        }
+
+        /* --- Creative Glassmorphism Cards --- */
+        .event-card-creative {
+            border: 1px solid rgba(226, 212, 166, 0.15);
+            border-radius: 12px;
+            padding: 40px 20px 30px;
+            margin-bottom: 40px;
+            background: #324c20;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            position: relative;
+            text-align: center; /* Centers all content */
+        }
+
+        /* Top glowing accent line */
+        .event-card-creative::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(226, 212, 166, 0.5), transparent);
+        }
+
+        /* --- Editorial Date Block --- */
+        .card-date-block {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .card-date-block .line {
+            height: 1px;
+            width: 40px;
+            background-color: rgba(226, 212, 166, 0.3);
+        }
+
+        .date-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            line-height: 1;
+        }
+
+        .date-wrap .month {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.55rem;
+            letter-spacing: 3px;
+            color: rgba(226, 212, 166, 0.8);
+            text-transform: uppercase;
+        }
+
+        .date-wrap .day {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            color: #e2d4a6;
+            margin: 5px 0;
+        }
+
+        .date-wrap .year {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.55rem;
+            letter-spacing: 3px;
+            color: rgba(226, 212, 166, 0.8);
+        }
+
+        /* --- Flowing Script Title --- */
+        .card-script-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            color: #fff;
+            font-weight: 400;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+        }
+
+        /* --- Symmetrical Info Grid --- */
+        .card-info-grid {
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            margin-bottom: 30px;
+        }
+
+        .info-col {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0 10px;
+        }
+
+        .info-col i {
+            color: rgba(226, 212, 166, 0.8);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .info-col h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.6rem;
+            letter-spacing: 2px;
+            color: rgba(244, 241, 225, 0.6);
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .info-col p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            color: #f4f1e1;
+            line-height: 1.3;
+        }
+
+        .vertical-divider {
+            width: 1px;
+            height: 50px;
+            background-color: rgba(226, 212, 166, 0.2);
+        }
+
+        /* --- Dress Code Footer --- */
+        .card-dress-code {
+            display: inline-block;
+            border-top: 1px solid rgba(226, 212, 166, 0.2);
+            border-bottom: 1px solid rgba(226, 212, 166, 0.2);
+            padding: 12px 30px;
+            margin-top: 10px;
+        }
+
+        .dc-label {
+            display: block;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.55rem;
+            letter-spacing: 3px;
+            color: rgba(226, 212, 166, 0.7);
+            margin-bottom: 5px;
+        }
+
+        .dc-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-style: italic;
+            color: #e2d4a6;
+        }
+       /* --- 3D Flip Card Magic --- */
+        .flip-container {
+            perspective: 1000px;
+            margin-bottom: 40px; 
+            width: 100%;
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent; /* Removes blue flash on mobile tap */
+        }
+
+        .flipper {
+            position: relative;
+            width: 100%;
+            /* A smooth, slightly bouncy flip animation */
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            transform-style: preserve-3d;
+        }
+
+        /* The class that triggers the flip */
+        .flip-container.flipped .flipper {
+            transform: rotateY(180deg);
+        }
+
+        /* Adjustments for the Front Face */
+        .event-card-creative.front {
+            margin-bottom: 0; 
+            position: relative;
+            z-index: 2;
+            transform: rotateY(0deg);
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+
+        /* Styling for the Back Face */
+        .event-card-creative.back {
+            margin-bottom: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transform: rotateY(180deg);
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+      /* Map Iframe Wrapper */
+        .map-wrapper {
+            width: 100%;
+            height: 220px;
+            border-radius: 8px;
+            border: 1px solid rgba(226, 212, 166, 0.4);
+            overflow: hidden;
+            margin: 15px 0;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+        }
+
+        .map-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+     
+
+        /* Animated Hint Text */
+        .flip-hint {
+            margin-top: 25px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.60rem;
+            letter-spacing: 2px;
+            color: rgba(226, 212, 166, 0.9);
+            text-transform: uppercase;
+            animation: pulse-hint 2s infinite;
+        }
+
+        @keyframes pulse-hint {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+        /* --- Pinterest Style Gallery Modal --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(6, 23, 2, 0.85); /* Transparent dark green */
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            z-index: 999999;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end; /* Anchors the popup to the bottom */
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s;
+        }
+
+        /* Active state toggled by JavaScript */
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background-color: #0b3103; /* Deep green */
+            width: 100%;
+            height: 85vh; /* Takes up 85% of the screen height */
+            border-top-left-radius: 25px;
+            border-top-right-radius: 25px;
+            padding: 25px 15px;
+            position: relative;
+            border-top: 2px solid #b39b5e;
+            overflow-y: auto;
+            
+            /* Slide up animation starting state */
+            transform: translateY(100%);
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: translateY(0); /* Slides into place */
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: rgba(226, 212, 166, 0.15);
+            color: #e2d4a6;
+            border: 1px solid rgba(226, 212, 166, 0.3);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        /* --- CSS Magic: Pinterest Masonry Layout --- */
+        .masonry-gallery {
+            column-count: 2; /* Creates two columns */
+            column-gap: 12px;
+            padding-bottom: 40px;
+        }
+
+        .masonry-gallery img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            display: block; 
+            border: 1px solid rgba(226, 212, 166, 0.3);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            /* Prevents images from getting awkwardly split across columns */
+            break-inside: avoid; 
+        }
+
+
+        /* --- SECURITY: PREVENT TEXT SELECTION & IMAGE DRAGGING --- */
+        body {
+            -webkit-user-select: none; /* Safari */
+            -moz-user-select: none;    /* Firefox */
+            -ms-user-select: none;     /* IE10+/Edge */
+            user-select: none;         /* Standard */
+            -webkit-touch-callout: none; /* Disables the tap-and-hold popup on iOS */
+        }
+
+        /* Allows users to still type in the RSVP form */
+        input, select, textarea {
+            -webkit-user-select: text;
+            -moz-user-select: text;
+            -ms-user-select: text;
+            user-select: text;
+        }
+
+        img {
+            /* Prevents dragging images to save them */
+            -webkit-user-drag: none;
+            -khtml-user-drag: none;
+            -moz-user-drag: none;
+            -o-user-drag: none;
+            
+        }
+        
+        /* --- security feature end --- */
+</style>
+
+<body >
+    <audio id="bg-music" loop>
+    <source src="bg-sound.mp3" type="audio/mpeg">
+</audio>
+    <div id="falling-leaves" class="leaves-container"></div>
+    <div id="desktop-warning">
+        <h1>Mobile View Required</h1>
+        <p>Please use a mobile device for a better display.</p>
+    </div>
+
+    <!-- Mobile Application Wrapper -->
+    <div id="mobile-app">
+        <!-- WELCOME SPLASH SCREEN -->
+        <div id="welcome-screen">
+            <!-- Envelope Animation Wrapper -->
+            <div class="envelope-wrapper" id="envelope-wrapper">
+                <div class="envelope">
+                    
+                    <!-- The Envelope Flap with Wax Seal -->
+                    <div class="envelope-flap">
+                        <div class="wax-seal">A&A</div>
+                    </div>
+                    
+                    <!-- The Card Inside -->
+                    <div class="envelope-paper">
+                        <div class="card-border">
+                            <h1 class="script-font" style="font-size: 2.2rem; margin-bottom: 5px; color: #0b3103;">Arathy & Amal</h1>
+                            <p style="font-family: 'Montserrat', sans-serif; font-size: 0.65rem; letter-spacing: 2px; color: #374f21;">YOU ARE INVITED</p>
+                        </div>
+                    </div>
+                    
+                    <!-- The Front Pocket -->
+                    <div class="envelope-front"></div>
+                    
+                    <!-- Calligraphy on the Front -->
+                    <div class="envelope-text">
+                        <span class="to-text">The Wedding Of</span>
+                        <span class="names-text">Arathy & Amal</span>
+                    </div>
+
+                </div>
+            </div>
+            
+            <button id="open-invite-btn" class="btn pulse-btn" style="margin-top: 50px; background-color: transparent; border: 2px solid #e2d4a6; color: #e2d4a6; z-index: 10; transition: opacity 0.5s;">
+                TAP TO OPEN <i class="fa-solid fa-envelope-open-text"></i>
+            </button>
+        </div>
+        
+    <button class="icon-btn" id="music-btn"><i class="fa-solid fa-music"></i></button>
+    <div class="first">
+            <!-- Golden Wedding Countdown -->
+<div id="wedding-countdown" class="golden-countdown">
+    <div class="time-box">
+        <span id="days" class="time-num">00</span>
+        <span class="time-label">Days</span>
+    </div>
+    <div class="time-box">
+        <span id="hours" class="time-num">00</span>
+        <span class="time-label">Hours</span>
+    </div>
+    <div class="time-box">
+        <span id="minutes" class="time-num">00</span>
+        <span class="time-label">Mins</span>
+    </div>
+    <div class="time-box">
+        <span id="seconds" class="time-num">00</span>
+        <span class="time-label">Secs</span>
+    </div>
+</div>
+      
+    </div>
+
+      
+    <section id="events">
+            <h3 class="section-title">Events Timeline </h3>
+            
+            <div class="timeline">
+                <div class="event-item">
+                    <div class="event-icon"><img src="ganesha_icon.png" alt="Haldi"></div>
+                    <div class="event-details">
+                        <h3 class="serif">Haldi Ceremony</h3>
+                        <p>28 AUG 2026<br>10:00 AM ONWARDS</p>
+                    </div>
+                </div>
+                
+                
+                <div class="event-item">
+                    <div class="event-icon"><img src="ganesha_icon.png" alt="Sangeet"></div>
+                    <div class="event-details">
+                        <h3 class="serif">Sangeet</h3>
+                        <p>28 AUG 2026<br>06:00 PM ONWARDS</p>
+                    </div>
+                </div>
+
+                <div class="event-item">
+                    <div class="event-icon"><img src="ganesha_icon.png" alt="Reception"></div>
+                    <div class="event-details">
+                        <h3 class="serif">Reception</h3>
+                        <p>29 AUG 2026<br>03:30 PM ONWARDS</p>
+                    </div>
+                </div>
+
+                <div class="event-item">
+                    <div class="event-icon"><img src="ganesha_icon.png" alt="Wedding"></div>
+                    <div class="event-details">
+                        <h3 class="serif">Wedding Ceremony</h3>
+                        <p>30 AUG 2026<br>11:00 AM ONWARDS</p>
+                    </div>
+                </div>
+
+                
+            </div>
+
+         </section>
+        <div class="ext">
+<section id="gallery">
+            <img src="section_divider.png" alt="Elephants Divider" style="width: 23%; display:block; margin: 10px auto 0;">
+            <h2 class="section-title">Gallery</h2>
+            
+           <div class="gallery-carousel">
+                <button class="arrow-btn" onclick="manualRotate(-1)">&#10094;</button>
+                
+                <!-- Added IDs to easily target these with JavaScript -->
+                <img src="GAL1.jpeg" id="gal-img-1" class="gallery-img" alt="Gallery 1">
+                <img src="GAL2.jpeg" id="gal-img-2" class="gallery-img main" alt="Gallery Main">
+                <img src="GAL3.jpeg" id="gal-img-3" class="gallery-img" alt="Gallery 2">
+                
+                <button class="arrow-btn" onclick="manualRotate(1)">&#10095;</button>
+            </div>
+
+           <button class="btn" onclick="openGalleryModal()">VIEW ALL PHOTOS </button>
+           
+        </section> 
+        <!-- --- DETAILED EVENTS CARDS SECTION --- -->
+        <section id="detailed-events" class="detailed-events-section">
+            
+            <div class="events-header">
+                <p class="events-subtitle">C E L E B R A T I O N S</p>
+                <h2 class="script-font" style="color: #324c20; font-size: 4rem; margin-top: -15px; margin-bottom: 5px;">Events</h2>
+                
+                <div class="gold-divider">
+                    <div class="line"></div>
+                    <i class="fa-solid fa-diamond" style="font-size: 8px; color: #324c20;"></i>
+                    <div class="line"></div>
+                </div>
+            </div>
+
+           <!-- Event Card 1: Haldi -->
+            <div class="flip-container">
+                <div class="flipper">
+                    <!-- FRONT -->
+                    <div class="event-card-creative front" onclick="this.closest('.flip-container').classList.add('flipped')">
+                        <div class="card-date-block">
+                            <div class="line"></div>
+                            <div class="date-wrap">
+                                <span class="month">AUG</span>
+                                <span class="day">28</span>
+                                <span class="year">2026</span>
+                            </div>
+                            <div class="line"></div>
+                        </div>
+                        <h3 class="card-script-title">Haldi Ceremony</h3>
+                        <div class="card-info-grid">
+                            <div class="info-col">
+                                <i class="fa-regular fa-clock"></i>
+                                <h4>Time</h4>
+                                <p>10:00 AM Onwards</p>
+                            </div>
+                            <div class="vertical-divider"></div>
+                            <div class="info-col">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <h4>Venue</h4>
+                                <p>Bride's Residence</p>
+                            </div>
+                        </div>
+                        <div class="card-dress-code">
+                            <span class="dc-label">DRESS CODE</span>
+                            <p class="dc-text">Lavender or White</p>
+                        </div>
+                        <div class="flip-hint"><i class="fa-solid fa-map-location-dot"></i> Tap to see map</div>
+                    </div>
+                    <!-- BACK -->
+                    <div class="event-card-creative back">
+                        <h3 class="card-script-title" style="font-size: 2.8rem; margin-bottom: 5px;">Venue Location</h3>
+                        <div class="map-wrapper">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3941.9669206830017!2d76.67177197501715!3d8.882667491172926!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zOMKwNTInNTcuNiJOIDc2wrA0MCcyNy43IkU!5e0!3m2!1sen!2sin!4v1783276845753!5m2!1sen!2sin" ></iframe>
+                        </div>
+                        <!-- FIX: Using .closest() for a bulletproof flip-back button -->
+                        <div class="flip-hint" style="cursor: pointer; padding: 15px 0 5px; width: 100%; border-top: 1px solid rgba(226,212,166,0.2); margin-top: 5px;" onclick="this.closest('.flip-container').classList.remove('flipped')">
+                            <i class="fa-solid fa-rotate-left"></i> Tap here to go back
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Event Card 2: Sangeeth -->
+            <div class="flip-container">
+                <div class="flipper">
+                    <!-- FRONT -->
+                    <div class="event-card-creative front" onclick="this.closest('.flip-container').classList.add('flipped')">
+                        <div class="card-date-block">
+                            <div class="line"></div>
+                            <div class="date-wrap">
+                                <span class="month">AUG</span>
+                                <span class="day">28</span>
+                                <span class="year">2026</span>
+                            </div>
+                            <div class="line"></div>
+                        </div>
+                        <h3 class="card-script-title">Sangeeth Night</h3>
+                        <div class="card-info-grid">
+                            <div class="info-col">
+                                <i class="fa-regular fa-clock"></i>
+                                <h4>Time</h4>
+                                <p>6:00 PM Onwards</p>
+                            </div>
+                            <div class="vertical-divider"></div>
+                            <div class="info-col">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <h4>Venue</h4>
+                                <p>Bride's Residence</p>
+                            </div>
+                        </div>
+                        <div class="card-dress-code">
+                            <span class="dc-label">DRESS CODE</span>
+                            <p class="dc-text">Any Party Wears</p>
+                        </div>
+                        <div class="flip-hint"><i class="fa-solid fa-map-location-dot"></i> Tap to see map</div>
+                    </div>
+                    <!-- BACK -->
+                    <div class="event-card-creative back">
+                        <h3 class="card-script-title" style="font-size: 2.8rem; margin-bottom: 5px;">Venue Location</h3>
+                        <div class="map-wrapper">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3941.9669206830017!2d76.67177197501715!3d8.882667491172926!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zOMKwNTInNTcuNiJOIDc2wrA0MCcyNy43IkU!5e0!3m2!1sen!2sin!4v1783276845753!5m2!1sen!2sin" ></iframe>
+                        </div>
+                        <div class="flip-hint" style="cursor: pointer; padding: 15px 0 5px; width: 100%; border-top: 1px solid rgba(226,212,166,0.2); margin-top: 5px;" onclick="this.closest('.flip-container').classList.remove('flipped')">
+                            <i class="fa-solid fa-rotate-left"></i> Tap here to go back
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Event Card 3: Reception -->
+            <div class="flip-container">
+                <div class="flipper">
+                    <!-- FRONT -->
+                    <div class="event-card-creative front" onclick="this.closest('.flip-container').classList.add('flipped')">
+                        <div class="card-date-block">
+                            <div class="line"></div>
+                            <div class="date-wrap">
+                                <span class="month">AUG</span>
+                                <span class="day">29</span>
+                                <span class="year">2026</span>
+                            </div>
+                            <div class="line"></div>
+                        </div>
+                        <h3 class="card-script-title">Reception</h3>
+                        <div class="card-info-grid">
+                            <div class="info-col">
+                                <i class="fa-regular fa-clock"></i>
+                                <h4>Time</h4>
+                                <p>3:30 PM Onwards</p>
+                            </div>
+                            <div class="vertical-divider"></div>
+                            <div class="info-col">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <h4>Venue</h4>
+                                <p>Mangalya Convention Centre, Kotyam</p>
+                            </div>
+                        </div>
+                        <div class="card-dress-code">
+                            <span class="dc-label">DRESS CODE</span>
+                            <p class="dc-text">Any Party Wears</p>
+                        </div>
+                        <div class="flip-hint"><i class="fa-solid fa-map-location-dot"></i> Tap to see map</div>
+                    </div>
+                    <!-- BACK -->
+                    <div class="event-card-creative back">
+                        <h3 class="card-script-title" style="font-size: 2.8rem; margin-bottom: 5px;">Venue Location</h3>
+                        <div class="map-wrapper">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3942.1523377806357!2d76.67692357568203!3d8.865406791526887!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b05e37c78977fc1%3A0xf076cfe516075d4!2sMangalya%20convention%20center!5e0!3m2!1sen!2sin!4v1783277023376!5m2!1sen!2sin" ></iframe>
+                        </div>
+                        <div class="flip-hint" style="cursor: pointer; padding: 15px 0 5px; width: 100%; border-top: 1px solid rgba(226,212,166,0.2); margin-top: 5px;" onclick="this.closest('.flip-container').classList.remove('flipped')">
+                            <i class="fa-solid fa-rotate-left"></i> Tap here to go back
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Event Card 4: Wedding -->
+            <div class="flip-container">
+                <div class="flipper">
+                    <!-- FRONT -->
+                    <div class="event-card-creative front" onclick="this.closest('.flip-container').classList.add('flipped')">
+                        <div class="card-date-block">
+                            <div class="line"></div>
+                            <div class="date-wrap">
+                                <span class="month">AUG</span>
+                                <span class="day">20</span>
+                                <span class="year">2026</span>
+                            </div>
+                            <div class="line"></div>
+                        </div>
+                        <h3 class="card-script-title">Wedding Ceremony</h3>
+                        <div class="card-info-grid">
+                            <div class="info-col">
+                                <i class="fa-regular fa-clock"></i>
+                                <h4>Swikaranam</h4>
+                                <p style="margin-bottom: 12px;">10:00 AM</p>
+                                <h4>Muhurtham</h4>
+                                <p style="white-space: nowrap;">11:00 AM — 11:30 AM</p>
+                            </div>
+                            <div class="vertical-divider"></div>
+                            <div class="info-col">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <h4>Venue</h4>
+                                <p>Vismaya Convention Centre,<br>Kundara</p>
+                            </div>
+                        </div>
+                        <div class="card-dress-code">
+                            <span class="dc-label">DRESS CODE</span>
+                            <p class="dc-text">Traditional Kerala Wear</p>
+                        </div>
+                        <div class="flip-hint"><i class="fa-solid fa-map-location-dot"></i> Tap to see map</div>
+                    </div>
+                    <!-- BACK -->
+                    <div class="event-card-creative back">
+                        <h3 class="card-script-title" style="font-size: 2.8rem; margin-bottom: 5px;">Venue Location</h3>
+                        <div class="map-wrapper">
+                            <iframe src="https://maps.google.com/maps?q=Vismaya+Convention+Centre,Kundara&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+                        </div>
+                        <div class="flip-hint" style="cursor: pointer; padding: 15px 0 5px; width: 100%; border-top: 1px solid rgba(226,212,166,0.2); margin-top: 5px;" onclick="this.closest('.flip-container').classList.remove('flipped')">
+                            <i class="fa-solid fa-rotate-left"></i> Tap here to go back
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!-- --- END DETAILED EVENTS CARDS --- -->
+        <div id="rsvp" >
+            <h2 class="section1-title">Kindly RSVP</h2>
+            <p class="section-desc" style="font-size: 1.75rem; margin-left: 7%;">Your presence and blessings mean the world to us.</p>
+            
+            <form class="rsvp-form" id="rsvpForm">
+                <div class="input-group">
+                    <!-- Ensure id="guestName" is here -->
+                    <input type="text" id="guestName" placeholder="👤 Enter Your Name" required>
+                </div>
+                <div class="input-group">
+                    <!-- Ensure id="attendanceStatus" is here -->
+                    <select id="attendanceStatus" required>
+                        <option value="" disabled selected>✉️ Will You Attend?</option>
+                        <option value="yes">Yes, I will attend</option>
+                        <option value="no">Sorry, I can't make it</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn">SUBMIT RSVP ♡</button>
+            </form>
+            </div>
+        </div>
+        <div class="fourth">
+            <!-- Gallery Section -->
+          
+
+        </div>
+        <!-- --- PINTEREST STYLE GALLERY MODAL --- -->
+        <div id="gallery-modal" class="modal-overlay">
+            <div class="modal-content">
+                <button class="modal-close" onclick="closeGalleryModal()"><i class="fa-solid fa-xmark"></i></button>
+                
+                <h3 class="script-font" style="font-size: 3rem; text-align: center; color: #e2d4a6; margin-top: 5px; margin-bottom: 25px;">Our Memories</h3>
+                
+                <!-- Masonry Grid -->
+                <div class="masonry-gallery">
+                    <img src="GAL1.jpeg" alt="Gallery Image 1">
+                    <img src="GAL2.jpeg" alt="Gallery Image 2">
+                    <img src="GAL3.jpeg" alt="Gallery Image 3">
+                    <img src="GAL4.jpeg" alt="Gallery Image 4">
+                    <img src="GAL5.jpeg" alt="Gallery Image 5">
+                    <img src="GAL6.PNG" alt="Gallery Image 6">
+                    <!-- You can keep adding more <img src="..."> tags here infinitely! -->
+                </div>
+            </div>
+        </div>
+        
+</div>
+</body>
+<!-- Interaction Script -->
+  <script>
+    // --- 1. FORM & ZOOM PREVENTION LOGIC ---
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwFqLqO9LueCNvS1r454hmtJGeY2yTUKTjZFi7NMN8-s21l_lMUYQ0A_-m0NiZDplik/exec'; // <-- Paste your long Google URL here
+    const form = document.getElementById('rsvpForm');
+
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+        
+        // Change button text so the user knows it is sending
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
+        submitBtn.innerHTML = 'Sending...';
+
+        // Gather the form data
+        const formData = new FormData();
+        formData.append('name', document.getElementById('guestName').value);
+        formData.append('status', document.getElementById('attendanceStatus').value);
+
+        // Send it to Google Sheets
+        fetch(scriptURL, { method: 'POST', body: formData })
+            .then(response => {
+                alert('Thank you! Your RSVP has been saved.');
+                form.reset();
+                submitBtn.innerHTML = originalText;
+            })
+            .catch(error => {
+                console.error('Error!', error.message);
+                alert('Oops! Something went wrong. Please try again.');
+                submitBtn.innerHTML = originalText;
+            });
+    });
+
+    document.addEventListener('gesturestart', function (e) {
+        e.preventDefault();
+    });
+
+    let lastTouchEnd = 0;
+    document.addEventListener('touchend', function (event) {
+        let now = (new Date()).getTime();
+        if (now - lastTouchEnd <= 300) {
+            event.preventDefault();
+        }
+        lastTouchEnd = now;
+    }, false);
+
+
+    // --- 2. FALLING LEAVES LOGIC ---
+    function createLeaves() {
+        const container = document.getElementById('falling-leaves');
+        const numLeaves = 15; 
+        for (let i = 0; i < numLeaves; i++) {
+            const leaf = document.createElement('i');
+            leaf.classList.add('fa-solid', 'fa-leaf', 'leaf');
+            leaf.style.left = Math.random() * 100 + 'vw';
+            const fallDuration = (Math.random() * 6 + 6) + 's';
+            const swayDuration = (Math.random() * 2 + 2) + 's';
+            const delay = (Math.random() * 10) + 's';
+            const size = (Math.random() * 10 + 12) + 'px';
+            leaf.style.fontSize = size;
+            leaf.style.animationDuration = `${fallDuration}, ${swayDuration}`;
+            leaf.style.animationDelay = `${delay}, ${delay}`;
+            container.appendChild(leaf);
+        }
+    }
+    window.addEventListener('load', createLeaves);
+
+
+    // --- 3. BACKGROUND MUSIC & ENVELOPE SPLASH SCREEN ---
+    const musicBtn = document.getElementById('music-btn');
+    const bgMusic = document.getElementById('bg-music');
+    const welcomeScreen = document.getElementById('welcome-screen');
+    const openBtn = document.getElementById('open-invite-btn');
+    
+    let isMusicPlaying = false;
+    document.body.style.overflow = 'hidden'; // Locks scroll on load
+
+    openBtn.addEventListener('click', function() {
+        // Trigger envelope animation
+        const envelope = document.getElementById('envelope-wrapper');
+        envelope.classList.add('is-opening');
+        
+        openBtn.style.opacity = '0';
+        openBtn.style.pointerEvents = 'none';
+
+        bgMusic.play().then(() => {
+            isMusicPlaying = true;
+            musicBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
+        }).catch(error => {
+            console.log("Audio play failed:", error);
+        });
+
+        // Wait 3 seconds for animation, then fade out screen and unlock scroll
+        setTimeout(() => {
+            welcomeScreen.style.opacity = '0';
+            document.body.style.overflow = 'auto'; 
+            setTimeout(() => {
+                welcomeScreen.style.visibility = 'hidden';
+                welcomeScreen.style.display = 'none';
+            }, 1000); 
+        }, 3000); 
+    });
+
+    musicBtn.addEventListener('click', function() {
+        if (isMusicPlaying) {
+            bgMusic.pause();
+            this.innerHTML = '<i class="fa-solid fa-music"></i>';
+        } else {
+            bgMusic.play();
+            this.innerHTML = '<i class="fa-solid fa-pause"></i>';
+        }
+        isMusicPlaying = !isMusicPlaying;
+    });
+
+
+    // --- 4. WEDDING COUNTDOWN LOGIC ---
+    const countDownDate = new Date("Aug 30, 2026 11:00:00").getTime();
+    const countdownInterval = setInterval(function() {
+        const now = new Date().getTime();
+        const distance = countDownDate - now;
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("days").innerHTML = days < 10 ? '0' + days : days;
+        document.getElementById("hours").innerHTML = hours < 10 ? '0' + hours : hours;
+        document.getElementById("minutes").innerHTML = minutes < 10 ? '0' + minutes : minutes;
+        document.getElementById("seconds").innerHTML = seconds < 10 ? '0' + seconds : seconds;
+
+        if (distance < 0) {
+            clearInterval(countdownInterval);
+            document.getElementById("wedding-countdown").innerHTML = "<div style='color:#e2d4a6; font-family:\"Cormorant Garamond\", serif; font-size:1.8rem; text-align:center;'>The Big Day is Here! ♡</div>";
+        }
+    }, 1000);
+
+
+    // --- 5. GALLERY AUTO-SLIDER LOGIC ---
+    let galleryAssets = ["GAL1.jpeg", "GAL2.jpeg", "GAL3.jpeg", "GAL4.jpeg", "GAL5.jpeg", "GAL6.PNG"];
+
+    function rotateGallery(direction) {
+        const img1 = document.getElementById('gal-img-1');
+        const img2 = document.getElementById('gal-img-2');
+        const img3 = document.getElementById('gal-img-3');
+        const allImages = [img1, img2, img3];
+
+        allImages.forEach(img => img.style.opacity = '0');
+
+        setTimeout(() => {
+            if (direction === 1) {
+                galleryAssets.push(galleryAssets.shift());
+            } else {
+                galleryAssets.unshift(galleryAssets.pop());
+            }
+
+            img1.src = galleryAssets[0];
+            img2.src = galleryAssets[1];
+            img3.src = galleryAssets[2];
+
+            allImages.forEach(img => img.style.opacity = '1');
+        }, 300); 
+    }
+
+    let autoScrollTimer = setInterval(() => {
+        rotateGallery(1);
+    }, 3500);
+
+    function manualRotate(direction) {
+        clearInterval(autoScrollTimer); 
+        rotateGallery(direction);
+        autoScrollTimer = setInterval(() => {
+            rotateGallery(1);
+        }, 3500);
+    }
+
+
+    // --- 6. SCROLL TIMELINE ANIMATION ---
+    document.addEventListener('DOMContentLoaded', function() {
+        const eventItems = document.querySelectorAll('.event-item');
+        const observerOptions = {
+            root: null, 
+            rootMargin: '0px',
+            threshold: 0.25 
+        };
+
+        const eventObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        eventItems.forEach(item => {
+            eventObserver.observe(item);
+        });
+    });
+    // --- 7. PINTEREST GALLERY MODAL LOGIC ---
+    function openGalleryModal() {
+        document.getElementById('gallery-modal').classList.add('active');
+        // Locks the background so the user doesn't accidentally scroll the main page
+        document.body.style.overflow = 'hidden'; 
+    }
+
+    function closeGalleryModal() {
+        document.getElementById('gallery-modal').classList.remove('active');
+        // Unlocks the background when closed
+        document.body.style.overflow = 'auto'; 
+    }
+
+
+//security feature
+// --- SECURITY: PREVENT INSPECT ELEMENT & RIGHT-CLICK ---
+    
+    // 1. Disable Right-Click (Context Menu)
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+    });
+
+    // 2. Disable common developer keyboard shortcuts
+    document.onkeydown = function(e) {
+        // Disable F12
+        if (e.keyCode === 123) {
+            return false;
+        }
+        // Disable Ctrl+Shift+I (Windows) / Cmd+Opt+I (Mac)
+        if (e.ctrlKey && e.shiftKey && e.keyCode === 73) {
+            return false;
+        }
+        // Disable Ctrl+Shift+C (Inspect Element)
+        if (e.ctrlKey && e.shiftKey && e.keyCode === 67) {
+            return false;
+        }
+        // Disable Ctrl+Shift+J (Console)
+        if (e.ctrlKey && e.shiftKey && e.keyCode === 74) {
+            return false;
+        }
+        // Disable Ctrl+U (View Source)
+        if (e.ctrlKey && e.keyCode === 85) {
+            return false;
+        }
+    };
+
+</script>
+</html>
